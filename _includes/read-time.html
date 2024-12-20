@@ -10,19 +10,19 @@
 {% assign read_time = words | divided_by: wpm %}
 
 {% unless read_time > 0 %}
-  {% assign read_time = min_time %}
+{% assign read_time = min_time %}
 {% endunless %}
 
 {% capture read_prompt %}
-  {{- site.data.locales[include.lang].post.read_time.prompt -}}
+{{- site.data.locales[include.lang].post.read_time.prompt -}}
 {% endcapture %}
 
 <!-- return element -->
 <span
-  class="readtime"
-  data-bs-toggle="tooltip"
-  data-bs-placement="bottom"
-  title="{{ words }} {{ site.data.locales[include.lang].post.words }}"
+        class="readtime"
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        title="{{ words }} {{ site.data.locales[include.lang].post.words }}"
 >
   <em>
     {{- read_time -}}
@@ -30,7 +30,7 @@
     {{- site.data.locales[include.lang].post.read_time.unit -}}
   </em>
   {%- if include.prompt -%}
-    {%- assign _prompt_words = read_prompt | number_of_words: 'auto' -%}
+    {%- assign _prompt_words = read_prompt | number_of_words %}
     {%- unless _prompt_words > 1 -%}{{ ' ' }}{%- endunless -%}
     {{ read_prompt }}
   {%- endif -%}
